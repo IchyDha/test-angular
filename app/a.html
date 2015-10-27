@@ -1,0 +1,42 @@
+<html ng-app="todo-app">
+
+<head>
+  <script src="js/angular.js"></script>
+  <script src="js/test.js"></script>
+  <script src="js/lodash.js"></script>
+</head>
+<style>
+  .task-done-true {
+    text-decoration: line-through;
+  }
+</style>
+
+<body ng-controller="todoCtrl as ctrl">
+
+  <h1>Todo</h1>
+  <form ng-submit="ctrl.submit()">
+    {{ctrl.undoneCount()}} of {{ctrl.todos.length}} remaining
+    <button type="button" ng-click="ctrl.archive()"> Archive </button>
+
+    <!-- <my-custom-directive ng-model="ctrl.todoTest" ></my-custom-directive> -->
+    <my-custom-directive ng-model="todo" ng-repeat="todo in ctrl.todos track by $index"></my-custom-directive>
+    <input type="text" ng-model="ctrl.todoText" />
+    <button type="submit">Add</button>
+
+
+  <h2>Archive List</h2>
+
+    {{ctrl.archives.length}} has been archived
+    <button type="button" ng-click="ctrl.resume()"> Resume </button>
+    <my-custoxem-directive ng-model="archive" ng-repeat="archive in ctrl.archives track by $index"></my-custom-directive>
+
+
+
+
+
+
+
+  </form>
+</body>
+
+</html>
